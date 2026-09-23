@@ -1,0 +1,49 @@
+@startuml mmda_core_callchain
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam defaultFontSize 12
+skinparam componentStyle rectangle
+skinparam nodesep 14
+skinparam ranksep 30
+skinparam ArrowColor #4a4a4a
+title mmda-core 运行链路：一次「元数据驱动」的实体请求
+legend
+  括号内为源码实测行数（src/main/java）。
+  两套数据访问栈并存：旧栈与 / 新栈的 import 引用点计数见 README.md。
+endlegend
+database "metadata 库表\nMetaCol / MetaUiField / MetaUiFieldI18nt / module" as DB
+package "元数据装载（-data + -metadata）" {
+  component "SqlMetadataProvider\n(1027 行)\nimplements MetadataProvider (135 行)" as MP
+  component "MetaObject (791)\nMetaCol (471) / MetaContext (108)" as MO
+}
+DB --> MP : "SELECT 装载"
+MP --> MO
+package "SQL 构建：旧栈（-data/data/sql）" {
+  component "SqlQuery (426) / SqlExpression (800) / SqlBuilder (157)" as OQ
+}
+package "SQL 内核：新栈（-sql / -entities）" {
+  component "SqlDialect (479) → EntityFactory (2179)\n→ EntityClassAccess (212)" as NF
+  component "SqlQueryable (151) / SqlCmd (27) / SqlExecutable (141)" as NC
+}
+MO --> OQ : "cols/relations 拼 SELECT·JOIN"
+MO ..> NF : "新栈经方言取 MetadataProvider"
+NF --> NC
+package "数据访问（-data/jdbc/repository）" {
+  component "Repository (584) / TenancyRepository (474) / EntityRepository (2011) / TenancyEntityRepository (1052)" as REPO
+}
+OQ --> REPO : "SQL 文本"
+NC ..> REPO : "JdbcTemplate"
+package "服务（-services + -caching）" {
+  component "DomainService (438) / EntityService (2673) / TenancyEntityService (522) / FlowableEntityService (272)" as SVC
+  component "EntityCacheProvider (359) / CacheProvider (275) / CachePolicy (199)" as CACHE
+}
+REPO --> SVC : "行 → 实体"
+SVC <--> CACHE : "Redis 读穿/写穿"
+package "接口（-api）" {
+  component "ReactiveApiController (400) / ReactiveEntityController (1922)\n≈50 个通用端点" as API
+}
+SVC --> API
+API --> [前端 TS：getRows / filterRows]
+@enduml

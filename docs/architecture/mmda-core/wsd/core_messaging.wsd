@@ -1,0 +1,123 @@
+@startuml mmda-core-messaging
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-messaging　类关系图（36 个类型 / 2,160 行）
+legend right
+  图中节点 31 / 36 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "messaging" {
+  interface "Message" as T1
+  interface "Sender" as T0
+}
+package "messaging.config" {
+  class "Config" as T13
+  class "MessagingConfiguration" as T2
+}
+package "messaging.ding" {
+  class "DingMessage" as T7
+  abstract class "DingSender" as T4
+}
+package "messaging.ding.impl" {
+  class "GroupDingSender" as T14
+  class "RobotDingSender" as T15
+}
+package "messaging.email" {
+  class "EmailMessage" as T25
+}
+package "messaging.phoneCall" {
+  class "PhoneCallMessage" as T9
+  abstract class "PhoneCallSender" as T5
+}
+package "messaging.phoneCall.impl" {
+  class "AliYunPhoneCallSender" as T16
+  class "HuaWeiPhoneCallSender" as T17
+}
+package "messaging.push" {
+  class "PushMessage" as T26
+  class "PushRequest" as T27
+  class "PushResponse" as T28
+}
+package "messaging.sms" {
+  class "SmsMessage" as T11
+  abstract class "SmsSender" as T8
+}
+package "messaging.sms.impl" {
+  class "AliyunSmsSender" as T18
+}
+package "messaging.tokens" {
+  class "MessageToken" as T19
+  interface "MessageTokenStore" as T12
+}
+package "messaging.wechat" {
+  class "AccessToken" as T29
+  class "QrCode" as T30
+  class "Scene" as T20
+  class "SceneStr" as T21
+  class "TemplateMessage" as T22
+  class "WeChatMessage" as T6
+  abstract class "WeChatSender" as T3
+}
+package "messaging.wechat.impl" {
+  class "WeChatOfficialAccountSender" as T23
+  class "WeChatPointToPointSender" as T24
+  class "WeChatServiceAccountSender" as T10
+}
+T1 <|-- T0
+T1 <|.. T7
+T0 <|.. T4
+T4 <|-- T14
+T4 <|-- T15
+T1 <|.. T25
+T1 <|.. T9
+T0 <|.. T5
+T5 <|-- T16
+T5 <|-- T17
+T1 <|.. T26
+T1 <|.. T11
+T0 <|.. T8
+T8 <|-- T18
+T1 <|.. T6
+T0 <|.. T3
+T3 <|-- T23
+T3 <|-- T24
+T3 <|-- T10
+T7 ..> T1 : 2
+T7 ..> T0 : 2
+T4 ..> T0 : 2
+T14 ..> T2 : 2
+T14 ..> T7 : 2
+T14 ..> T4 : 2
+T15 ..> T2 : 2
+T15 ..> T7 : 2
+T15 ..> T4 : 2
+T25 ..> T1 : 2
+T25 ..> T0 : 2
+T9 ..> T1 : 2
+T9 ..> T0 : 2
+T5 ..> T0 : 2
+T16 ..> T2 : 2
+T16 ..> T9 : 2
+T16 ..> T5 : 2
+T17 ..> T9 : 2
+T17 ..> T5 : 2
+T26 ..> T1 : 2
+T26 ..> T0 : 2
+T11 ..> T1 : 2
+T8 ..> T0 : 2
+T18 ..> T2 : 2
+T18 ..> T11 : 2
+T18 ..> T8 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：mmda-core-utils　|　预编译 jar（scope=system）：—
+endfooter
+@enduml

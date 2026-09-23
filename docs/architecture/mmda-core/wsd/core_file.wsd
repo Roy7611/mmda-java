@@ -1,0 +1,110 @@
+@startuml mmda-core-file
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-file　类关系图（48 个类型 / 9,585 行）
+legend right
+  图中节点 34 / 48 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "file.app" {
+  class "ApplicationContextExcelProvider" as T8
+}
+package "file.clients" {
+  class "ApiClient" as T15
+  class "FileExcelClient" as T19
+}
+package "file.clients.web" {
+  class "ResponseResult" as T20
+}
+package "file.constant" {
+  class "Annotations" as T21
+}
+package "file.excel" {
+  class "CellStyleKey" as T22
+  class "ExcelConstant" as T10
+  interface "ExcelExportProgressListener" as T27
+  class "PagedListSupplier" as T16
+  class "WorkbookStyleRegistry" as T0
+}
+package "file.excel.bindings" {
+  interface "BindingCell" as T2
+  class "BindingName" as T28
+  abstract class "BindingPatterns" as T29
+  class "BindingResult" as T5
+  class "BindingRow" as T23
+  class "BindingTable" as T9
+  class "BooleanBindingCell" as T30
+  class "DateBindingCell" as T31
+  class "DoubleBindingCell" as T32
+  class "EnumBindingCell" as T33
+  class "ExpressionBindingCell" as T24
+  abstract class "SimpleBindingCell" as T1
+}
+package "file.excel.converters" {
+  abstract class "Converters" as T17
+}
+package "file.excel.excelname" {
+  class "SheetItemName" as T11
+  class "SheetName" as T6
+  class "SheetNameData" as T12
+  class "SheetNameInfo" as T7
+}
+package "file.excel.modul" {
+  class "TreeData" as T25
+}
+package "file.exceptions" {
+  class "ExcelException" as T13
+}
+package "file.pdf" {
+  class "PdfConverter" as T14
+}
+package "file.util" {
+  class "ExcelFileUtil" as T3
+  class "ExcelToCsvUtil" as T26
+  class "FileUtil" as T18
+  class "ReflectionUtil" as T4
+}
+T15 <|-- T19
+T1 <|-- T30
+T1 <|-- T31
+T1 <|-- T32
+T1 <|-- T33
+T2 <|.. T24
+T2 <|.. T1
+T15 ..> T20 : 2
+T19 ..> T18 : 2
+T2 ..> T17 : 2
+T28 ..> T4 : 2
+T23 ..> T8 : 2
+T23 ..> T21 : 2
+T23 ..> T10 : 2
+T23 ..> T0 : 2
+T23 ..> T3 : 2
+T9 ..> T8 : 2
+T9 ..> T16 : 2
+T9 ..> T0 : 2
+T9 ..> T11 : 2
+T9 ..> T6 : 2
+T9 ..> T7 : 2
+T9 ..> T4 : 2
+T30 ..> T0 : 2
+T31 ..> T0 : 2
+T32 ..> T0 : 2
+T33 ..> T0 : 2
+T24 ..> T3 : 2
+T1 ..> T0 : 2
+T12 ..> T3 : 2
+T3 ..> T19 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：—　|　预编译 jar（scope=system）：mmda-core-data · mmda-core-entities · mmda-core-metadata
+endfooter
+@enduml

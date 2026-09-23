@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeviceParam_A4_Landscape" pageWidth="1191" pageHeight="842" orientation="Landscape" columnWidth="1151" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="155bba4b-2192-430e-95b1-df954dea0ca3">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="Chart" uuid="2425bcea-2701-48ec-ad9f-7b42e775f4c5">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="label" class="java.lang.String"/>
+		<field name="number" class="java.lang.Float"/>
+		<field name="name" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="details" uuid="59c11e62-86dd-4057-8e09-d85ab6e59519">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="name4Time" class="java.lang.String"/>
+		<field name="name4Param0" class="java.lang.String"/>
+		<field name="name4Param1" class="java.lang.String"/>
+		<field name="name4Param2" class="java.lang.String"/>
+		<field name="name4Param3" class="java.lang.String"/>
+		<field name="name4Param4" class="java.lang.String"/>
+		<field name="name4Param5" class="java.lang.String"/>
+		<field name="name4Param6" class="java.lang.String"/>
+		<field name="name4Param7" class="java.lang.String"/>
+		<field name="name4Param8" class="java.lang.String"/>
+		<field name="name4Param9" class="java.lang.String"/>
+		<field name="name4Param10" class="java.lang.String"/>
+		<field name="name4Param11" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="deviceName" class="java.lang.String">
+		<parameterDescription><![CDATA[设备名称]]></parameterDescription>
+	</parameter>
+	<parameter name="dateStr" class="java.lang.String">
+		<parameterDescription><![CDATA[日期范围]]></parameterDescription>
+	</parameter>
+	<parameter name="searchWord" class="java.lang.String">
+		<parameterDescription><![CDATA[搜索关键字]]></parameterDescription>
+	</parameter>
+	<parameter name="Chart" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="img" class="java.lang.String"/>
+	<parameter name="details" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="creator" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="435" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="1150" height="20" uuid="4b922950-b76d-4fd7-99fa-3c3d7d100981"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[设备/参数/历史数据]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="70" height="20" uuid="e795d8d3-79fc-4a05-80cd-f3304bc990f1"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[设备名称：]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="70" y="20" width="474" height="20" isPrintWhenDetailOverflows="true" uuid="677d5739-ece8-4a55-adfd-5d8636d52b3a"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deviceName}!=null?$P{deviceName}:""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="70" height="20" uuid="b8bb8024-efb0-449a-8b87-f6f1bfae2781"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[日期范围：]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="70" y="40" width="474" height="20" isPrintWhenDetailOverflows="true" uuid="b09aa6de-f6b6-449d-a5d9-18b67912bcfe"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateStr}!=null?$P{dateStr}:""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="544" y="40" width="70" height="20" uuid="ac2234fa-4294-4ec5-8695-a885695a3058"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[搜索关键词：]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="614" y="40" width="536" height="20" isPrintWhenDetailOverflows="true" uuid="c656c187-1084-4e67-8f81-3057d66b08a4"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="华文宋体" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{searchWord}!=null?$P{searchWord}:""]]></textFieldExpression>
+			</textField>
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="60" width="1150" height="374" uuid="03c61a3b-7ee5-4a6e-a05f-d96f567ec6a7"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="Chart" uuid="e231c38d-307b-447d-830f-c3774e91a562">
+							<dataSourceExpression><![CDATA[$P{Chart}]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{label}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{number}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</title>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<componentElement>
+				<reportElement key="" stretchType="RelativeToTallestObject" x="0" y="0" width="1150" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="19c9090c-0cc6-484f-b3fa-cc97e603d52e"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="details" uuid="b1d9bdf9-1d87-427a-adda-1a33174e68a9">
+						<dataSourceExpression><![CDATA[$P{details}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="1150">
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="110" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="81d7f983-83c2-4ef8-9bc5-9b8fff4a231b"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Time}!=null?$F{name4Time}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="110" y="0" width="90" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="d7081ec2-6a39-444f-a4c9-5263fb99bae5"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param0}!=null?$F{name4Param0}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="200" y="0" width="90" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="5451df91-a1ea-4a50-af07-0282e2ba06b7"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param1}!=null?$F{name4Param1}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="290" y="0" width="90" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="06bcf970-7be4-4797-aa7b-6365013a98a6"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param2}!=null?$F{name4Param2}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="380" y="0" width="90" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="a9cc7e58-e859-423c-b605-db1ca0d716b4"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param3}!=null?$F{name4Param3}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="470" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="5ae9d8e6-aa92-4604-8a92-acd26d8a3b44"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param4}!=null?$F{name4Param4}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="555" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="b9da932f-74cf-49c4-b953-fa1a009cda9d"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param5}!=null?$F{name4Param5}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="640" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="74842ff9-be1b-4561-a2b8-19b34afb4693"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param6}!=null?$F{name4Param6}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="725" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="5ac14ce3-a152-4dee-9112-1e72c2e84e27"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param7}!=null?$F{name4Param7}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="810" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="1aff4cdd-8804-4d13-a616-f208de249965"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param8}!=null?$F{name4Param8}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="895" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="5aa11737-3a8f-4c52-a436-51866775c868"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param9}!=null?$F{name4Param9}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="980" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="208196a7-534d-4ffc-97a7-c145693dfacd"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param10}!=null?$F{name4Param10}:""]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<reportElement stretchType="RelativeToTallestObject" x="1065" y="0" width="85" height="27" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="9aad9852-4e39-4ea3-843a-88fbebfac8cb"/>
+							<box>
+								<pen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="华文宋体" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{name4Param11}!=null?$F{name4Param11}:""]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="1" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<break>
+				<reportElement x="0" y="0" width="1149" height="1" uuid="3ff56ff1-d261-42a4-bf07-194c114ce940"/>
+			</break>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="181" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="110" height="30" uuid="118c1328-a81d-4029-b6d9-3e0a7b9974d2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="华文宋体" isBold="true"/>
+				</textElement>
+				<text><![CDATA[审计人:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="0" width="514" height="30" uuid="e92d2b91-676a-43d4-afaf-37740238ef84"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="华文宋体"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{creator}!=null?$P{creator}:""]]></textFieldExpression>
+			</textField>
+			<image isLazy="true" onErrorType="Blank">
+				<reportElement x="0" y="30" width="149" height="150" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="8f6bff7c-254b-451d-926e-bacc8f75b350"/>
+				<imageExpression><![CDATA[$P{img}]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+</jasperReport>

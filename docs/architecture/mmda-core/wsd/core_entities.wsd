@@ -1,0 +1,98 @@
+@startuml mmda-core-entities
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-entities　类关系图（52 个类型 / 6,071 行）
+legend right
+  图中节点 34 / 52 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "entities" {
+  abstract class "AbstractEntity" as T4
+  interface "Attachable" as T12
+  interface "Auditable" as T9
+  interface "CompositeKey" as T5
+  abstract class "CompositeTenancyEntity" as T22
+  interface "CompositeTenancyKey" as T2
+  interface "Computable" as T8
+  interface "Entity" as T1
+  class "EntityAction" as T13
+  class "EntityActionLink" as T18
+  class "EntityActionParam" as T23
+  class "EntityClassAccess" as T24
+  abstract class "EntityFactory" as T25
+  class "EntityFilterCondition" as T26
+  class "EntityState" as T19
+  class "FieldChange" as T27
+  class "FileImportErrorInfo" as T28
+  interface "Flowable" as T14
+  abstract class "FlowableEntity" as T29
+  abstract class "MasterTenancyEntity" as T10
+  interface "Ownable" as T15
+  interface "Partial" as T30
+  class "RefItemKey" as T31
+  class "RefKey" as T16
+  class "RefParam" as T20
+  interface "SequencedRow" as T17
+  abstract class "TenancyEntity" as T0
+  interface "TenancyKey" as T32
+  class "ValidationError" as T33
+}
+package "enums" {
+  enum "BackgroundTaskStatus" as T21
+  enum "ChangeType" as T6
+}
+package "models" {
+  class "Attachment" as T3
+  class "ChangeLog" as T7
+  class "FlowTrail" as T11
+}
+T1 <|.. T4
+T3 <|-- T12
+T3 <|-- T12
+T2 <|-- T22
+T0 <|-- T22
+T5 <|-- T2
+T17 <|-- T1
+T1 <|-- T24
+T1 <|-- T25
+T1 <|-- T25
+T4 <|-- T27
+T15 <|-- T14
+T14 <|.. T29
+T10 <|-- T29
+T12 <|.. T10
+T0 <|-- T10
+T3 <|-- T10
+T16 <|-- T31
+T2 <|.. T16
+T4 <|-- T0
+T2 <|-- T3
+T0 <|-- T3
+T0 <|-- T7
+T0 <|-- T11
+T12 ..> T3 : 2
+T27 ..> T6 : 2
+T27 ..> T7 : 2
+T14 ..> T11 : 2
+T29 ..> T11 : 2
+T10 ..> T3 : 2
+T3 ..> T5 : 2
+T3 ..> T2 : 2
+T3 ..> T0 : 2
+T7 ..> T0 : 2
+T7 ..> T6 : 2
+T11 ..> T8 : 2
+T11 ..> T0 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：mmda-core-metadata · mmda-core-sql · mmda-core-utils　|　预编译 jar（scope=system）：—
+endfooter
+@enduml

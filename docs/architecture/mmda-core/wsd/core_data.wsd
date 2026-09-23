@@ -1,0 +1,86 @@
+@startuml mmda-core-data
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-data　类关系图（67 个类型 / 11,952 行）
+legend right
+  图中节点 26 / 67 个：按模块内被引用度排序取前 26
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "data.exceptions" {
+  class "SqlQueryGrammarException" as T12
+  class "SqlQueryUnresolvedException" as T13
+  class "TenancyDataAccessException" as T8
+}
+package "data.jdbc.mappers" {
+  class "AttachmentRowMapper" as T14
+  class "AuditTrailRowMapper" as T15
+  class "BackgroundTaskRowMapper" as T16
+  class "ChangeLogRowMapper" as T17
+  class "CustomizedQueryRowMapper" as T18
+  class "FlowTrailRowMapper" as T19
+  class "NoticeRowMapper" as T20
+  class "ReportTemplateRowMapper" as T21
+  class "RowMapperPagedResultSetExtractor" as T9
+  class "TagRowMapper" as T22
+}
+package "data.jdbc.metadata" {
+  interface "DbMetadataProvider" as T5
+  class "MySqlMetadataProvider" as T23
+  abstract class "SqlMetadataProvider" as T4
+}
+package "data.jdbc.repository" {
+  abstract class "EntityRepository" as T7
+  class "EnumItemResultSetExtractor" as T24
+  interface "Repository" as T3
+  abstract class "TenancyEntityRepository" as T0
+  interface "TenancyRepository" as T11
+}
+package "data.sql" {
+  class "MySqlDateTime" as T25
+  interface "SqlDateTime" as T1
+  class "SqlExpression" as T2
+  enum "SqlOperator" as T10
+  class "SqlQuery" as T6
+}
+T4 <|-- T23
+T5 <|.. T4
+T3 <|.. T7
+T7 <|-- T0
+T11 <|.. T0
+T3 <|-- T11
+T1 <|.. T25
+T5 ..> T1 : 2
+T23 ..> T25 : 2
+T23 ..> T1 : 2
+T4 ..> T2 : 2
+T4 ..> T6 : 2
+T7 ..> T9 : 2
+T7 ..> T5 : 2
+T7 ..> T2 : 2
+T7 ..> T6 : 2
+T3 ..> T5 : 2
+T3 ..> T2 : 2
+T3 ..> T6 : 2
+T0 ..> T8 : 2
+T0 ..> T9 : 2
+T0 ..> T2 : 2
+T0 ..> T10 : 2
+T0 ..> T6 : 2
+T11 ..> T8 : 2
+T11 ..> T2 : 2
+T6 ..> T12 : 2
+T6 ..> T13 : 2
+T6 ..> T5 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：—　|　预编译 jar（scope=system）：mmda-core-entities · mmda-core-metadata · mmda-core-utils
+endfooter
+@enduml

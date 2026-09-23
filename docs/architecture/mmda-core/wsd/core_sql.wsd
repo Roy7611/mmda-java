@@ -1,0 +1,102 @@
+@startuml mmda-core-sql
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-sql　类关系图（55 个类型 / 65,193 行）
+legend right
+  图中节点 34 / 55 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "sql" {
+  class "SqlArg" as T5
+  class "SqlCmd" as T6
+  class "SqlConsts" as T26
+  interface "SqlExecutable" as T10
+  class "SqlJoin" as T27
+  interface "SqlMetaContext" as T3
+  class "SqlPatterns" as T28
+  class "SqlQuery" as T9
+  class "SqlQueryable" as T15
+}
+package "sql.antlr4" {
+  interface "SqlParserListener" as T16
+  class "SqlParserParser" as T17
+  interface "SqlParserVisitor" as T18
+  class "SqlQueryParser" as T19
+  interface "SqlQueryParserListener" as T20
+  interface "SqlQueryParserVisitor" as T21
+}
+package "sql.dialects" {
+  abstract class "AnsiSqlDialect" as T4
+  class "OracleDialect" as T12
+  class "PostgreSqlDialect" as T22
+  interface "SqlDialect" as T7
+}
+package "sql.expressions" {
+  class "SqlArithmeticExp" as T13
+  class "SqlCriteriaExp" as T0
+  class "SqlExp" as T2
+  interface "SqlExpVisitor" as T14
+  enum "SqlOp" as T8
+}
+package "sql.schema" {
+  class "Column" as T23
+  interface "SchemaProvider" as T11
+  class "Table" as T24
+}
+package "sql.types" {
+  class "DbDataType" as T1
+  class "DbDataTypeMap" as T25
+  class "KingbaseDataTypes" as T29
+  class "MySqlDataTypes" as T30
+  class "OracleDataTypes" as T31
+  class "PostgreSqlDataTypes" as T32
+  class "SqlServerDataTypes" as T33
+}
+T10 <|.. T6
+T14 <|.. T27
+T3 <|.. T9
+T10 <|.. T15
+T7 <|.. T4
+T4 <|-- T12
+T4 <|-- T22
+T2 <|-- T13
+T2 <|-- T0
+T5 ..> T2 : 2
+T27 ..> T7 : 2
+T27 ..> T0 : 2
+T27 ..> T2 : 2
+T27 ..> T14 : 2
+T9 ..> T7 : 2
+T9 ..> T0 : 2
+T15 ..> T7 : 2
+T4 ..> T13 : 2
+T4 ..> T0 : 2
+T4 ..> T2 : 2
+T4 ..> T8 : 2
+T12 ..> T6 : 2
+T12 ..> T3 : 2
+T12 ..> T0 : 2
+T12 ..> T1 : 2
+T12 ..> T31 : 2
+T22 ..> T6 : 2
+T22 ..> T3 : 2
+T22 ..> T0 : 2
+T22 ..> T1 : 2
+T22 ..> T32 : 2
+T7 ..> T0 : 2
+T7 ..> T2 : 2
+T7 ..> T8 : 2
+T7 ..> T1 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：mmda-core-metadata · mmda-core-utils　|　预编译 jar（scope=system）：—
+endfooter
+@enduml

@@ -1,0 +1,73 @@
+@startuml mmda-core-security
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-security　类关系图（35 个类型 / 2,795 行）
+legend right
+  图中节点 25 / 35 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "security" {
+  class "UserAccountService" as T3
+}
+package "security.exceptions" {
+  class "InvalidUserAccountException" as T13
+}
+package "security.models" {
+  class "ClientApp" as T18
+  class "ClientAppModule" as T19
+  class "ClientAppRelease" as T20
+  class "OpenIdentity" as T4
+  class "Role" as T7
+  class "RoleDataAuth" as T8
+  class "RoleModuleAuth" as T5
+  class "RoleUiAuth" as T9
+  class "Roles" as T21
+  class "User" as T0
+  class "UserAccount" as T1
+  class "UserDevice" as T10
+  class "UserOpenIdentity" as T6
+  class "UserRole" as T14
+  class "UserRoleId" as T22
+}
+package "security.repository" {
+  interface "UserRepository" as T15
+}
+package "security.tokens" {
+  interface "JwtTokenService" as T11
+  class "OtpToken" as T16
+  interface "OtpTokenStore" as T2
+}
+package "security.tokens.jwt" {
+  class "Converter" as T23
+  class "Token" as T24
+}
+package "security.utils" {
+  class "InternationalMobile" as T12
+  abstract class "UsernameParser" as T17
+}
+T3 ..> T13 : 2
+T3 ..> T4 : 2
+T3 ..> T0 : 2
+T3 ..> T1 : 2
+T3 ..> T15 : 2
+T3 ..> T2 : 2
+T3 ..> T12 : 2
+T3 ..> T17 : 2
+T15 ..> T3 : 2
+T15 ..> T0 : 2
+T11 ..> T1 : 2
+T23 ..> T3 : 2
+T17 ..> T4 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：mmda-core-entities · mmda-core-metadata · mmda-core-utils　|　预编译 jar（scope=system）：—
+endfooter
+@enduml

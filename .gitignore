@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -20,5 +21,65 @@
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+=======
+# ============================================================================
+# mmda-java —— 版本控制范围
+# 当前只纳入框架层 mmda-core 与生成的架构图 docs/；下列顶层工程暂不纳入，
+# 将来要纳入时删掉对应的那一行即可（业务模块的解耦/脱敏需另行处理）。
+# ============================================================================
+/mmda/
+/mmda-base/
+/mmda-crm/
+/mmda-fin/
+/mmda-foundation/
+/mmda-hrm/
+/mmda-iot/
+/mmda-lang/
+/mmda-los/
+/mmda-mes/
+/mmda-srm/
+/.idea/
+/IDEA.md
+
+# ---- 构建产物（这些是导致仓库膨胀到 1.1G 的元凶）----
+target/
+*.class
+*.jar
+*.war
+*.ear
+.flattened-pom.xml
+.mvn/wrapper/maven-wrapper.jar
+
+# ---- IDE ----
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ---- 日志 / 本地临时 ----
+*.log
+svn.log
+
+# ---- 第三方/系统授权字体（微软雅黑、中易宋体/仿宋/华文宋体等，67MB，不可再分发）----
+#      Jasper 导 PDF 需要这些字体，克隆者需自备；换开源 CJK 字体（Noto Sans CJK）可随仓分发。
+mmda-core/mmda-core-file/src/main/resources/fonts/*.ttf
+
+# ---- 本地凭据配置：真文件不入库，仓库里放同名 *.example 模板 ----
+application-*-local.yml
+mmda-core/mmda-core-messaging/src/main/resources/application-msg.yml
+
+# ---- docs/sql：ISO/IEC 9075 标准 PDF/RAR 等第三方付费出版物，
+#      公开仓有版权风险且体积大（约 12MB），故不纳入。
+#      若只想排除标准文档、保留自制材料，改成忽略具体文件即可。
+/docs/sql/
+
+# ---- 来自 GitHub Java 模板的补充 ----
+*.ctxt
+.mtj.tmp/
+*.nar
+*.tar.gz
+*.rar
+>>>>>>> 94b2275 (mmda-core 5.0.0：框架层首次入库（含模块架构图）)
 hs_err_pid*
 replay_pid*

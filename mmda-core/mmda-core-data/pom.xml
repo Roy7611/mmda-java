@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>mmda-core</artifactId>
+        <groupId>cloud.mmda</groupId>
+        <version>5.0.0</version>
+    </parent>
+    <artifactId>mmda-core-data</artifactId>
+    <packaging>jar</packaging>
+
+    <name>MMDA Core Data</name>
+    <version>5.0.0</version>
+    <description>
+        MMDA Core Data is relational database accessing layer.
+    </description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <mmda.local.repository>C:/Users/${user.name}/.m2/repository/cloud/mmda</mmda.local.repository>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>cloud.mmda</groupId>
+            <artifactId>mmda-core-utils</artifactId>
+            <version>${project.version}</version>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${mmda.local.repository}/mmda-core-utils/${mmda-core.version}/mmda-core-utils-${project.version}.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>cloud.mmda</groupId>
+            <artifactId>mmda-core-metadata</artifactId>
+            <version>${project.version}</version>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${mmda.local.repository}/mmda-core-metadata/${mmda-core.version}/mmda-core-metadata-${project.version}.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>cloud.mmda</groupId>
+            <artifactId>mmda-core-entities</artifactId>
+            <version>${project.version}</version>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${mmda.local.repository}/mmda-core-entities/${mmda-core.version}/mmda-core-entities-${project.version}.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>6.3.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.32</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

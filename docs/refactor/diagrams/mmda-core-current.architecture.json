@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MMDA 服务端 mmda-core 现状架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1300,
+      450
+    ],
+    "views": [
+      {
+        "id": "legacy-path",
+        "label": "旧栈主干（业务在用）",
+        "focus": [
+          "biz",
+          "api",
+          "domainsvc",
+          "repo",
+          "datasql",
+          "db"
+        ],
+        "note": "426 个 Repository 子类、431 个 Service 子类全部走这条路径。"
+      },
+      {
+        "id": "new-kernel",
+        "label": "新栈内核 EntityFactory",
+        "focus": [
+          "factory",
+          "coresql",
+          "meta",
+          "db"
+        ],
+        "note": "方言与 Lambda DSL 已成型，但只有 6 处引用，尚未接线。"
+      },
+      {
+        "id": "pending-wire",
+        "label": "待接线处",
+        "focus": [
+          "repo",
+          "factory",
+          "datasql",
+          "coresql"
+        ],
+        "note": "EntityRepository:75 已持有 EntityFactory 字段，全文件从未使用。"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "biz",
+      "type": "frontend",
+      "label": "业务应用模块",
+      "sublabel": "crm fin mes los srm",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "mmda-core-api",
+      "sublabel": "ReactiveEntityController",
+      "pos": [
+        295,
+        40
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "domainsvc",
+      "type": "backend",
+      "label": "mmda-core-services",
+      "sublabel": "EntityService 2672 行",
+      "pos": [
+        550,
+        40
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "repo",
+      "type": "backend",
+      "label": "旧栈 · EntityRepository",
+      "sublabel": "core-data 2010 行",
+      "pos": [
+        805,
+        40
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "cache",
+      "type": "database",
+      "label": "Redis 缓存",
+      "sublabel": "EntityCacheProvider",
+      "pos": [
+        295,
+        190
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "factory",
+      "type": "backend",
+      "label": "新栈 · EntityFactory",
+      "sublabel": "core-entities 2178 行",
+      "pos": [
+        550,
+        190
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "meta",
+      "type": "database",
+      "label": "core-metadata 元模型",
+      "sublabel": "MetaObject · MetaCol",
+      "pos": [
+        805,
+        190
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "datasql",
+      "type": "backend",
+      "label": "旧 SQL 层",
+      "sublabel": "SqlQuery · SqlExpression",
+      "pos": [
+        1060,
+        190
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "coresql",
+      "type": "backend",
+      "label": "新 SQL 内核",
+      "sublabel": "SqlDialect × 8 · DSL",
+      "pos": [
+        805,
+        340
+      ],
+      "size": [
+        190,
+        70
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "业务数据库",
+      "sublabel": "MySQL · Oracle · TDengine",
+      "pos": [
+        1060,
+        340
+      ],
+      "size": [
+        190,
+        70
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "biz-to-api",
+      "from": "biz",
+      "to": "api",
+      "label": "REST",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "api-to-svc",
+      "from": "api",
+      "to": "domainsvc",
+      "label": "委托",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "svc-to-repo",
+      "from": "domainsvc",
+      "to": "repo",
+      "label": "CRUD",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "svc-to-cache",
+      "from": "domainsvc",
+      "to": "cache",
+      "label": "读穿缓存",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "repo-to-factory",
+      "from": "repo",
+      "to": "factory",
+      "label": "字段已注入但未接线",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "repo-to-datasql",
+      "from": "repo",
+      "to": "datasql",
+      "label": "构建 SQL",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "meta-to-datasql",
+      "from": "meta",
+      "to": "datasql",
+      "label": "装载元数据",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "meta-to-coresql",
+      "from": "meta",
+      "to": "coresql",
+      "label": "装载元数据",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "factory-to-coresql",
+      "from": "factory",
+      "to": "coresql",
+      "label": "SqlDialect + DSL",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "datasql-to-db",
+      "from": "datasql",
+      "to": "db",
+      "label": "JDBC",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "coresql-to-db",
+      "from": "coresql",
+      "to": "db",
+      "label": "JDBC",
+      "fromSide": "right",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "形态",
+      "items": [
+        "Java 21 / Spring Boot 3.3.1 · mmda-core 5.0.0",
+        "无 VCS、无根 pom：11 个 Maven 聚合工程",
+        "core 483 文件 / 12.5 万行，测试仅 527 行"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "两栈并存的实测引用数",
+      "items": [
+        "旧栈 core.data.sql.* → 250 个文件",
+        "新栈 core.sql.* → 4 个文件（2 个是测试）",
+        "EntityFactory 引用点 6 处，含 1 个死字段"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "重构起点",
+      "items": [
+        "EntityRepository:75 持有 EntityFactory 却从未使用",
+        "core-data 不依赖 core-sql，新 SQL 层未接入",
+        "core-sql 65446 行中 59020 行是 ANTLR 生成"
+      ]
+    }
+  ]
+}

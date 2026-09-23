@@ -1,0 +1,82 @@
+# ============================================================================
+# application-msg.yml 模板（脱敏）—— 复制为 application-msg.yml 后填入真实值。
+# 真文件已在 .gitignore 中排除，不会入库。
+# ============================================================================
+mmda:
+  sms:
+    #短信通知方式，aliyun 或者 huawei
+    #provider: aliyun
+    batch-endpoint:
+    host: ${HOST} # 见 deploy 环境的配置说明
+    endpoint: ${ENDPOINT} # 见 deploy 环境的配置说明
+    client-id: ${CLIENT_ID} # 见 deploy 环境的配置说明
+    client-secret: ${CLIENT_SECRET} # 见 deploy 环境的配置说明
+  ding:
+    #钉钉通知方式，robot 或者 group
+    #provider: group
+    key: ${KEY} # 见 deploy 环境的配置说明
+    secret: ${SECRET} # 见 deploy 环境的配置说明
+    get-by-mobile-service-url: ${GET_BY_MOBILE_SERVICE_URL} # 见 deploy 环境的配置说明
+    get-token-service-url: ${GET_TOKEN_SERVICE_URL} # 见 deploy 环境的配置说明
+    token: ${TOKEN} # 见 deploy 环境的配置说明
+    validate-token: ${VALIDATE_TOKEN} # 见 deploy 环境的配置说明
+#    validate-token: SEC00a8028cbf3343ee7ea584306b61129b9c44d5b5b807289a92c1560d2d167844  此签名已过期
+  wechat:
+    #微信通知方式，serviceAccount 或者 officialAccount  或者   pointToPoint
+    #provider: serviceAccount
+    #wxToken: weixintoken
+    appId: ${APPID} # 见 deploy 环境的配置说明
+    appSecret: ${APPSECRET} # 见 deploy 环境的配置说明
+    #message-template-code: 7XtrJWOlSXV19PFAvGwnyFakrwbIO_7YTAYKdAp-cYk
+    apiUrl: ${APIURL} # 见 deploy 环境的配置说明
+    mpUrl: ${MPURL} # 见 deploy 环境的配置说明
+  phone-call:
+    #电话通知方式，aliyun 或者 huawei
+    #provider: aliyun
+    ALi-access-key-id: ${ALI_ACCESS_KEY_ID} # 见 deploy 环境的配置说明
+    ALi-secret: ${ALI_SECRET} # 见 deploy 环境的配置说明
+    ALi-region-id: ${ALI_REGION_ID} # 见 deploy 环境的配置说明
+    ALi-product: ${ALI_PRODUCT} # 见 deploy 环境的配置说明
+    ALi-endpoint-name: ${ALI_ENDPOINT_NAME} # 见 deploy 环境的配置说明
+  push:
+    provider: ${PROVIDER} # 见 deploy 环境的配置说明
+    env: ${ENV} # 见 deploy 环境的配置说明
+    region-id: ${REGION_ID} # 见 deploy 环境的配置说明
+    access-key-id: ${ACCESS_KEY_ID} # 见 deploy 环境的配置说明
+    access-key-secret: ${ACCESS_KEY_SECRET} # 见 deploy 环境的配置说明
+    IOSAppkey: ${IOSAPPKEY} # 见 deploy 环境的配置说明
+    android-appkey-pro: ${ANDROID_APPKEY_PRO} # 见 deploy 环境的配置说明
+    android-appkey-test: ${ANDROID_APPKEY_TEST} # 见 deploy 环境的配置说明
+  mail:
+#    username: liucl@syclive.com
+#    password: lCL@ZL1223
+    username: ${USERNAME} # 见 deploy 环境的配置说明
+    password: ${PASSWORD} # 见 deploy 环境的配置说明
+    host: ${HOST} # 见 deploy 环境的配置说明
+    default-encoding: ${DEFAULT_ENCODING} # 见 deploy 环境的配置说明
+    port: ${PORT} # 见 deploy 环境的配置说明
+    smtp-socket-factory-class: ${SMTP_SOCKET_FACTORY_CLASS} # 见 deploy 环境的配置说明
+    smtp-socket-factory-fallback: ${SMTP_SOCKET_FACTORY_FALLBACK} # 见 deploy 环境的配置说明
+    smtp-socket-factory-port: ${SMTP_SOCKET_FACTORY_PORT} # 见 deploy 环境的配置说明
+    smtp-auth: ${SMTP_AUTH} # 见 deploy 环境的配置说明
+    smtp-starttls-enable: ${SMTP_STARTTLS_ENABLE} # 见 deploy 环境的配置说明
+    smtp-starttls-required: ${SMTP_STARTTLS_REQUIRED} # 见 deploy 环境的配置说明
+#spring:
+#  mail:
+#    username: liucl@syclive.com
+#    host: smtp.exmail.qq.com
+#    password: lCL@ZL1223
+#    default-encoding: utf-8
+#    port: 465
+#    properties:
+#      mail:
+#        debug: true
+#        smtp:
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+#            fallback: false
+#            port: 465
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true

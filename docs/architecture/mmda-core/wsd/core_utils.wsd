@@ -1,0 +1,41 @@
+@startuml mmda-core-utils
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-utils　类关系图（24 个类型 / 3,977 行）
+legend right
+  图中节点 10 / 24 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "utils" {
+  abstract class "BaseUtil" as T2
+  class "CollectionUtil" as T1
+  class "ConvertUtil" as T3
+  class "DateRange" as T4
+  enum "DateRangeKind" as T5
+  class "DateTimeRange" as T6
+  abstract class "DateTimeUtil" as T7
+  class "DateUtil" as T8
+  class "RsaUtil" as T9
+  class "StringUtil" as T0
+}
+T3 ..> T8 : 1
+T3 ..> T0 : 1
+T4 ..> T5 : 1
+T4 ..> T6 : 1
+T4 ..> T7 : 1
+T6 ..> T4 : 1
+T8 ..> T0 : 1
+T0 ..> T1 : 1
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：—　|　预编译 jar（scope=system）：—
+endfooter
+@enduml

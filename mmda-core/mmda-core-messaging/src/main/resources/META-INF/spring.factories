@@ -1,0 +1,11 @@
+cloud.mmda.core.messaging.sms.SmsSender=\
+  cloud.mmda.core.messaging.sms.impl.AliyunSmsSender
+
+cloud.mmda.core.messaging.ding.DingSender=\
+  cloud.mmda.core.messaging.ding.impl.GroupDingSender,cloud.mmda.core.messaging.ding.impl.RobotDingSender
+
+cloud.mmda.core.messaging.wechat.WeChatSender=\
+  cloud.mmda.core.messaging.wechat.impl.WeChatServiceAccountSender,cloud.mmda.core.messaging.wechat.impl.WeChatOfficialAccountSender,cloud.mmda.core.messaging.wechat.impl.WeChatPointToPointSender
+
+cloud.mmda.core.messaging.phoneCall.PhoneCallSender=\
+  cloud.mmda.core.messaging.phoneCall.impl.AliYunPhoneCallSender,cloud.mmda.core.messaging.phoneCall.impl.HuaWeiPhoneCallSender

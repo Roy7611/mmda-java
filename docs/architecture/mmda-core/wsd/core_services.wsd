@@ -1,0 +1,90 @@
+@startuml mmda-core-services
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 12
+skinparam shadowing false
+set namespaceSeparator none
+skinparam nodesep 12
+skinparam ranksep 26
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+title mmda-core-services　类关系图（32 个类型 / 6,409 行）
+legend right
+  图中节点 26 / 32 个：按模块内被引用度排序取前 34
+  实线空心箭头=extends；虚线空心箭头=implements
+  <u>虚线开放箭头=类型引用</u>（数字=引用它的文件数，≥2 才画）
+  真源：src/main/java 源码实测（import + 同包名引用 + extends/implements）
+endlegend
+package "app" {
+  class "ApplicationContextProvider" as T6
+}
+package "security" {
+  class "UserAccountService" as T8
+  interface "UserRepository" as T18
+}
+package "services" {
+  class "AttachmentService" as T19
+  class "AuditTrailService" as T20
+  class "BackgroundTaskService" as T12
+  class "ChangeLogService" as T21
+  class "CustomizedCache" as T22
+  class "CustomizedCacheService" as T23
+  class "CustomizedQueryService" as T13
+  interface "DomainAction" as T24
+  class "DomainActionParam" as T4
+  interface "DomainService" as T5
+  abstract class "EntityService" as T7
+  class "FlowTrailService" as T14
+  class "NoticeService" as T15
+  class "ReportTemplateService" as T16
+  abstract class "TenancyEntityService" as T0
+}
+package "services.exceptions" {
+  class "DataInvalidException" as T25
+  class "DomainException" as T1
+  class "NoRecordsAffectedException" as T9
+  class "NotFoundException" as T10
+  class "OperationFailedException" as T3
+  class "OperationNotAllowException" as T11
+}
+package "services.i18n" {
+  class "LocalizedMessage" as T2
+  class "LocalizedMessageService" as T17
+}
+T0 <|-- T19
+T0 <|-- T20
+T0 <|-- T12
+T0 <|-- T21
+T0 <|-- T13
+T5 <|.. T7
+T0 <|-- T14
+T0 <|-- T15
+T0 <|-- T16
+T7 <|-- T0
+T1 <|-- T25
+T1 <|-- T9
+T1 <|-- T10
+T1 <|-- T3
+T1 <|-- T11
+T12 ..> T6 : 2
+T12 ..> T1 : 2
+T12 ..> T10 : 2
+T12 ..> T3 : 2
+T12 ..> T11 : 2
+T23 ..> T3 : 2
+T7 ..> T6 : 2
+T7 ..> T2 : 2
+T7 ..> T17 : 2
+T0 ..> T1 : 2
+T0 ..> T9 : 2
+T0 ..> T3 : 2
+T25 ..> T2 : 2
+T1 ..> T2 : 2
+T9 ..> T2 : 2
+T10 ..> T2 : 2
+T3 ..> T2 : 2
+T11 ..> T2 : 2
+footer
+  <b>模块外依赖（真源 pom.xml）</b>　源码模块：mmda-core-file · mmda-core-messaging　|　预编译 jar（scope=system）：mmda-core-caching · mmda-core-data · mmda-core-entities · mmda-core-metadata · mmda-core-security · mmda-core-utils
+endfooter
+@enduml
